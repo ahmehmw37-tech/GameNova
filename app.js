@@ -1,12 +1,12 @@
 const defaultProducts=[
-{id:1,name:"PlayStation 5 Controller",cat:"ps",price:3499,icon:"🎮"},{id:2,name:"Gaming Headset",cat:"pc",price:1299,icon:"🎧"},
-{id:3,name:"Xbox Wireless Controller",cat:"xbox",price:2799,icon:"🕹️"},{id:4,name:"Mechanical Keyboard",cat:"pc",price:1899,icon:"⌨️"},
-{id:5,name:"Gaming Mouse",cat:"pc",price:899,icon:"🖱️"},{id:6,name:"PlayStation Gift Card",cat:"ps",price:500,icon:"💳"},
-{id:7,name:"Xbox Gift Card",cat:"xbox",price:500,icon:"💚"},{id:8,name:"RGB Desk Setup",cat:"pc",price:2399,icon:"✨"}];
+{id:1,name:"PlayStation 5 Controller",cat:"ps",price:3499,icon:"🎮",img:"images/ps5.svg"},{id:2,name:"Gaming Headset",cat:"pc",price:1299,icon:"🎧",img:"images/pc.svg"},
+{id:3,name:"Xbox Wireless Controller",cat:"xbox",price:2799,icon:"🕹️",img:"images/xbox.svg"},{id:4,name:"Mechanical Keyboard",cat:"pc",price:1899,icon:"⌨️",img:"images/pc.svg"},
+{id:5,name:"Gaming Mouse",cat:"pc",price:899,icon:"🖱️",img:"images/pc.svg"},{id:6,name:"PlayStation Gift Card",cat:"ps",price:500,icon:"💳",img:"images/ps5.svg"},
+{id:7,name:"Xbox Gift Card",cat:"xbox",price:500,icon:"💚",img:"images/xbox.svg"},{id:8,name:"RGB Desk Setup",cat:"pc",price:2399,icon:"✨",img:"images/pc.svg"}];
 function getProducts(){return JSON.parse(localStorage.getItem("gn_products")||"null")||defaultProducts}
 function money(n){return new Intl.NumberFormat("ar-EG").format(n)}
 let cart=JSON.parse(localStorage.getItem("gn_cart")||"[]");
-function renderProducts(cat="all"){let ps=getProducts();document.getElementById("products").innerHTML=ps.filter(p=>cat==="all"||p.cat===cat).map(p=>`<article class="product"><div class="pimg">${p.icon}</div><div class="pbody"><small>${p.cat.toUpperCase()}</small><h3>${p.name}</h3><b>${money(p.price)} ج.م</b><button class="primary buy" onclick="add(${p.id})">أضف للسلة</button></div></article>`).join("")}
+function renderProducts(cat="all"){let ps=getProducts();document.getElementById("products").innerHTML=ps.filter(p=>cat==="all"||p.cat===cat).map(p=>`<article class="product"><div class="pimg">${p.img?`<img src="${p.img}" alt="${p.name}">`:p.icon}</div><div class="pbody"><small>${p.cat.toUpperCase()}</small><h3>${p.name}</h3><b>${money(p.price)} ج.م</b><button class="primary buy" onclick="add(${p.id})">أضف للسلة</button></div></article>`).join("")}
 function add(id){let p=getProducts().find(x=>x.id===id);cart.push(p);localStorage.setItem("gn_cart",JSON.stringify(cart));updateCount();toast("تمت الإضافة 🛒")}
 function updateCount(){document.getElementById("count").textContent=cart.length}
 function openModal(id){document.getElementById(id).classList.add("show")}function closeModal(id){document.getElementById(id).classList.remove("show")}
