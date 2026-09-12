@@ -1,0 +1,21 @@
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameNova | منصة الألعاب</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="top"><a class="brand" href="index.html"><b>GN</b> GameNova</a>
+<nav><a href="#home">الرئيسية</a><a href="#store">المتجر</a><a href="#offers">العروض</a></nav>
+<div><button class="ghost" onclick="openModal('login')">دخول</button><button class="cart" onclick="openCart()">🛒 <i id="count">0</i></button></div></header>
+<section class="hero" id="home"><div><span class="pill">🎮 منصة اللاعبين</span><h1>عالم الألعاب<br><em>بين إيديك.</em></h1>
+<p>متجر GameNova لمنتجات الألعاب الرقمية والإكسسوارات، مع حسابات مستخدمين وسلة شراء ولوحة تحكم للإدارة.</p>
+<a class="primary" href="#store">تصفح المتجر</a></div><div class="hero-visual"><div class="glow"></div><div class="gamepad">🎮</div><div class="float one">⚡ عروض قوية</div><div class="float two">🔥 الأكثر مبيعًا</div></div></section>
+<section class="section" id="store"><div class="head"><div><small>SHOP</small><h2>المتجر</h2></div><div id="filters"></div></div><div class="grid" id="products"></div></section>
+<section class="banner" id="offers"><div><span class="pill">عرض الأسبوع</span><h2>Upgrade your setup</h2><p>استخدم كود <b>GAME30</b> عند تجهيز نظام الدفع الحقيقي.</p></div><strong>30%</strong></section>
+<section class="section contact"><small>CONTACT</small><h2>GameNova</h2><p>البريد: <a href="mailto:hadhoahmed@gmail.com">hadhoahmed@gmail.com</a></p></section>
+<footer>© 2026 GameNova — hadhoahmed@gmail.com <a href="admin.html">Admin</a></footer>
+
+<div class="modal" id="login"><div class="box"><button class="x" onclick="closeModal('login')">×</button><h2>تسجيل الدخول</h2>
+<form id="loginForm"><input id="lemail" type="email" placeholder="الإيميل" required><input id="lpass" type="password" placeholder="كلمة المرور" required><button class="primary full">دخول</button></form>
+<p>ليس لديك حساب؟ <a href="#" onclick="switchModal('login','signup')">إنشاء حساب</a></p></div></div>
+<div class="modal" id="signup"><div class="box"><button class="x" onclick="closeModal('signup')">×</button><h2>إنشاء حساب</h2>
+<form id="signupForm"><input id="sname" placeholder="الاسم" required><input id="semail" type="email" placeholder="الإيميل" required><input id="spass" type="password" minlength="6" placeholder="كلمة المرور" required><button class="primary full">إنشاء</button></form></div></div>
+<div class="modal" id="cart"><div class="box wide"><button class="x" onclick="closeModal('cart')">×</button><h2>سلة المشتريات</h2><div id="cartItems"></div><h3>الإجمالي: <span id="total">0</span> ج.م</h3><button class="primary full" onclick="placeOrder()">تأكيد الطلب</button><p class="note">الدفع الحقيقي بفوري يحتاج Backend آمن ومفتاح التاجر، وليس GitHub Pages وحدها.</p></div></div>
+<div id="toast"></div><script src="app.js"></script></body></html>
